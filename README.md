@@ -49,3 +49,56 @@ The Hacker News'ten Haberler ve Özetler:
 
 ## Lisans
 Bu proje MIT Lisansı ile lisanslanmıştır.
+
+
+# The Hacker News Summarizer
+
+This project fetches the latest cybersecurity news from The Hacker News (https://thehackernews.com/) and summarizes them in Turkish using the Google Gemini API. Each news article is processed individually, with a 10-second delay between summarization requests to reduce the load on the API quota.
+
+## Features
+- Fetches 5 news articles from The Hacker News homepage.
+- Extracts the title, URL, and content of each article.
+- Summarizes the content in Turkish using the Google Gemini API.
+- Waits 10 seconds between each summarization request.
+
+## Requirements
+- Python 3.12 or higher
+- Required libraries:
+  - `requests`
+  - `beautifulsoup4`
+  - `google-generativeai`
+- A valid Google Gemini API key (set as `GEMINI_API_KEY` in the code).
+
+## Installation
+1. Install the required libraries:
+   ```bash
+   pip install requests beautifulsoup4 google-generativeai
+   ```
+2. Obtain a Gemini API key from Google Cloud Console and add it to the `GEMINI_API_KEY` variable in the code.
+3. Save the code to a file (e.g., `thehackernews_gemini_slow_fetcher.py`).
+
+## Usage
+Run the following command in your terminal:
+```bash
+python thehackernews_gemini_slow_fetcher.py
+```
+- The script will fetch 5 articles and display their summaries.
+- It waits 10 seconds between each article.
+
+## Example Output
+```
+The Hacker News'ten Haberler ve Özetler:
+======================================================================
+1. Title: CISA and FBI Warn Fast Flux
+   URL: https://thehackernews.com/2025/04/cisa-and-fbi-warn-fast-flux-is-powering.html
+   Summary: CISA and FBI warned that the fast flux technique hides malicious networks.
+======================================================================
+10 seconds waiting...
+```
+
+## Notes
+- **Quota Issue:** If you exceed the Gemini API free quota, you may encounter a `429 ResourceExhausted` error. Enable billing in Google Cloud to resolve this.
+- **Error Handling:** If summarization fails, the error message will be displayed.
+
+## License
+This project is licensed under the MIT License.
